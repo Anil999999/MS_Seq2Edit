@@ -4,4 +4,6 @@
 cbert微调模型: https://github.com/xueyouluo/speller-bert
 微信公众号语料: https://github.com/nonamestreet/weixin_public_corpus
 
+流畅度计算方法: https://github.com/baojunshan/nlp-fluency
+
 
