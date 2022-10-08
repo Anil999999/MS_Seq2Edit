@@ -1,5 +1,4 @@
 import torch
-import os
 import argparse
 from utils import *
 from transformers import BertTokenizer, get_scheduler
@@ -10,7 +9,6 @@ from random import seed
 
 
 class Trainer:
-
     def __init__(self, config):
         self.config = config
         self.fix_seed(config.seed)
@@ -126,9 +124,10 @@ def main(config):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--pretrained_model", required=True, type=str)
-    parser.add_argument("--num_detect_layers", default=2, type=int,
+    parser.add_argument("--num_detect_layers", default=3, type=int,
                         help="the number of detection layers")
     parser.add_argument('--detect_labels', default=2, type=int)
+    parser.add_argument('--alpha', default=0.85, type=float)
     parser.add_argument("--train_path", required=True, type=str)
     parser.add_argument("--dev_path", required=True, type=str)
     parser.add_argument("--lbl_path", required=True, type=str)

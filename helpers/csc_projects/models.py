@@ -1,9 +1,8 @@
 import os
-import torch
 import torch.nn as nn
 from transformers import BertModel
 from collections import OrderedDict
-from transformers.models.bert.modeling_bert import BertConfig, BertOutput, BertLayer, BertAttention, BertEmbeddings, PreTrainedModel
+from transformers.models.bert.modeling_bert import BertConfig, BertLayer
 
 
 class MDCSpeller(nn.Module):
@@ -44,10 +43,10 @@ class MDCSpeller(nn.Module):
         loss = 0.0
         if trg_ids is not None:
             cor_loss = self.correct_loss(correct_output.view(-1, self.bert_model.config.vocab_size), trg_ids.view(-1))
-            loss += cor_loss
+            loss += self.config.alpha * cor_loss
 
         if trg_detect is not None:
             detect_loss = self.detect_loss(detect_output.view(-1, self.config.detect_labels), trg_detect.view(-1))
-            loss += detect_loss
+            loss += (1 - self.config.alpha) * detect_loss
 
         return loss, correct_output, detect_output

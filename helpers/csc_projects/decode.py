@@ -15,7 +15,6 @@ class Decoder:
         self.device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
         self.tokenizer = BertTokenizer.from_pretrained(config.pretrained_model)
         self.test_loader = init_dataloader(config.test_path, config, "test", self.tokenizer)
-        # self.model = BERT_Model(config, self.test_loader.dataset)
         self.model = MDCSpeller(config)
         self.model.to(self.device)
         self.config = config
@@ -29,8 +28,6 @@ class Decoder:
             outputs = torch.argmax(logits, dim=-1)
             logits = torch.softmax(logits, dim=-1)
             logits = logits.cpu()
-            # det_outputs = torch.argmax(det_logits, dim=-1)
-            # texts = []
             for idx, outputs_i in enumerate(outputs):
                 tmp_prob = []
                 collected_outputs.append(outputs_i)

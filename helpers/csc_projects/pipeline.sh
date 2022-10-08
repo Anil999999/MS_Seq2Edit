@@ -29,17 +29,3 @@ CUDA_VISIBLE_DEVICES=$CUDA_DEVICE python -u train.py \
     2>&1 | tee $MODEL_DIR"/_log.txt"
 
 
-#CUDA_VISIBLE_DEVICES=$CUDA_DEVICE python -u train.py \
-#    --pretrained_model $PRETRAIN_MODEL \
-#    --train_path $DATA_DIR"/train.pkl" \
-#    --dev_path $DATA_DIR"/dev.pkl" \
-#    --lbl_path $DEV_TRG_FILE \
-#    --save_path $MODEL_DIR \
-#    --batch_size $BATCH_SIZE \
-#    --num_epochs $NUM_EPOCH \
-#    --lr $LEARNING_RATE \
-#    --tie_cls_weight True \
-#    --weights_name $save_path"" \
-#    --tag "sighan" \
-#    2>&1 | tee $MODEL_DIR"/_log.txt"
-
