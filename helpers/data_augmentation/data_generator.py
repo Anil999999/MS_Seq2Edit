@@ -1,4 +1,3 @@
-import os
 import random
 import re
 import numpy as np
@@ -26,17 +25,17 @@ class DataGenerator(object):
         self.missing_prob = 0.1
         self.selection_prob = 0.7
         self.redundant_prob = 0.15
-        self.confusion_pronounce_path = "../../data/augmentation/pinyin_confusion_all.json"
-        self.confusion_shape_path = "../../data/augmentation/shape_confusion_all.json"
-        self.extra_candidate_path = "../../data/augmentation/extra_candidate.json"
-        self.vocab_path = "../../data/augmentation/vocab.txt"
+        self.confusion_pronounce_path = "./data/augmentation/pinyin_confusion_all.json"
+        self.confusion_shape_path = "./data/augmentation/shape_confusion_all.json"
+        self.extra_candidate_path = "./data/augmentation/extra_candidate.json"
+        self.vocab_path = "./data/augmentation/vocab.txt"
         self.vocab_threshold = 100
         self.extra_candidate = json.load(open(self.extra_candidate_path, 'r'))
         self.confusion_pronounce = json.load(open(self.confusion_pronounce_path, 'r'))
         self.confusion_shape = json.load(open(self.confusion_shape_path, 'r'))
-        self.stopword_path = "../../data/augmentation/stop_words"
-        self.not_common_path = "../../data/augmentation/生僻字.txt"
-        self.words_path = "../../data/augmentation/words.txt"
+        self.stopword_path = "./data/augmentation/stop_words"
+        self.not_common_path = "./data/augmentation/生僻字.txt"
+        self.words_path = "./data/augmentation/words.txt"
         self.vocab, self.stopwords, self.words = self.load_data()
         self.mx1 = threading.Lock()
         headers = ['id', 'source', 'target']
@@ -659,7 +658,7 @@ def main(args):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser('the data augmentation parameters')
+    parser = argparse.ArgumentParser('data augmentation parameters')
     parser.add_argument('--data_path', type=str, default='/data/weixin_public_corpus-master/articles.json',
                         help='the seed data to generate data')
     parser.add_argument('--save_path', type=str, default='../../data/correction_generator.csv',
