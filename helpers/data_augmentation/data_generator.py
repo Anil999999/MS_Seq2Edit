@@ -140,6 +140,7 @@ class DataGenerator(object):
             self.save_data(data_all)
 
     def get_select_sim_sentence(self, sentence):
+        # 设置音似和形似的替换比例
         if random.random() >= 0.7:
             result = self.get_pronounce_sim_sentence(sentence)
         else:
