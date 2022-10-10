@@ -25,17 +25,17 @@ class DataGenerator(object):
         self.missing_prob = 0.1
         self.selection_prob = 0.7
         self.redundant_prob = 0.15
-        self.confusion_pronounce_path = "./data/augmentation/pinyin_confusion_all.json"
-        self.confusion_shape_path = "./data/augmentation/shape_confusion_all.json"
-        self.extra_candidate_path = "./data/augmentation/extra_candidate.json"
-        self.vocab_path = "./data/augmentation/vocab.txt"
+        self.confusion_pronounce_path = "./data/pinyin_confusion_all.json"
+        self.confusion_shape_path = "./data/shape_confusion_all.json"
+        self.extra_candidate_path = "./data/extra_candidate.json"
+        self.vocab_path = "./data/vocab.txt"
         self.vocab_threshold = 100
         self.extra_candidate = json.load(open(self.extra_candidate_path, 'r'))
         self.confusion_pronounce = json.load(open(self.confusion_pronounce_path, 'r'))
         self.confusion_shape = json.load(open(self.confusion_shape_path, 'r'))
-        self.stopword_path = "./data/augmentation/stop_words"
-        self.not_common_path = "./data/augmentation/生僻字.txt"
-        self.words_path = "./data/augmentation/words.txt"
+        self.stopword_path = "./data/stop_words"
+        self.not_common_path = "./data/生僻字.txt"
+        self.words_path = "./data/words.txt"
         self.vocab, self.stopwords, self.words = self.load_data()
         self.mx1 = threading.Lock()
         headers = ['id', 'source', 'target']
@@ -639,7 +639,6 @@ def main(args):
         logger.info('the data format is not support !')
         return
 
-    data = data[:10]
     generator = DataGenerator(save_path=args.save_path)
     thread_lst = []
     sub_size = len(data) // args.thread_num if len(data) % args.thread_num == 0 \
