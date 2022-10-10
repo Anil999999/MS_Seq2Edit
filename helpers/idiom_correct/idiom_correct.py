@@ -103,6 +103,7 @@ class IdiomCorrection:
         else:
             return True
 
+
 def main(config):
     correct = IdiomCorrection()
     input_data = [line.strip().split() for line in open(config.input_data)]
@@ -111,9 +112,6 @@ def main(config):
     for value in input_data:
         result = correct.error_check(value[1])
         if result is not None:
-            print( value[0] )
-            print( result )
-            print()
             data_all.append([value[0], result])
         else:
             data_all.append(value)
