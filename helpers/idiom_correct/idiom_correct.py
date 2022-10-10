@@ -117,7 +117,7 @@ def main(config):
             data_all.append(value)
     with open(args.save_path, 'w', encoding='utf-8') as wf:
         for value in data_all:
-            wf.write(' '.join(value) + '\n')
+            wf.write('\t'.join(value) + '\n')
 
 
 if __name__ == '__main__':
