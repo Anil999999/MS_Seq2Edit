@@ -2,6 +2,8 @@
 import os
 from transformers import BertModel
 import torch
+import sys
+sys.path.append('../')
 import tokenization
 import argparse
 from gector.gec_model import GecBERTModel
@@ -193,7 +195,7 @@ if __name__ == '__main__':
     # read parameters
     parser = argparse.ArgumentParser()
     parser.add_argument('--csc_model_path',
-                        default='./plm/bert')
+                        default='../plm/bert')
     parser.add_argument('--csc_predict',
                         default=False,
                         type=bool)

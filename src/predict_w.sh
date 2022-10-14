@@ -3,13 +3,13 @@ CUDA_DEVICE=1
 SEED=42
 #
 
-MODEL_DIR=./exps/seq2edit/model_only_move
+MODEL_DIR=../exps/seq2edit/model_only_move
 if [ ! -d $MODEL_DIR ]; then
   mkdir -p $MODEL_DIR
 fi
 
-#PRETRAIN_WEIGHTS_DIR=./plm/chinese-macbert-large
-PRETRAIN_WEIGHTS_DIR=./plm/chinese-struct-bert-large
+#PRETRAIN_WEIGHTS_DIR=../plm/chinese-macbert-large
+PRETRAIN_WEIGHTS_DIR=../plm/chinese-struct-bert-large
 
 VOCAB_PATH=./data/output_only_move
 
@@ -17,11 +17,11 @@ VOCAB_PATH=./data/output_only_move
 MODEL_PATH=$MODEL_DIR"/Best_Model_Stage_2.th"
 RESULT_DIR=$MODEL_DIR"/results"
 
-#INPUT_FILE=./data/cgec/valid.src
-INPUT_FILE=./data/cged_test.txt
+#INPUT_FILE=../data/cgec/valid.src
+INPUT_FILE=../data/cged_test.txt
 
 echo $INPUT_FILE
-export vocab_path=./plm/chinese-struct-bert-large/vocab.txt
+export vocab_path=../plm/chinese-struct-bert-large/vocab.txt
 
 CSC_OUTPUT=$RESULT_DIR"/csc.output"
 

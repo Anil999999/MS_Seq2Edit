@@ -3,8 +3,10 @@ import argparse
 import logging
 import os
 import time
-from random import seed
+import sys
 import torch
+sys.path.append('../')
+from random import seed
 from allennlp.data import allennlp_collate
 from allennlp.data.dataloader import PyTorchDataLoader
 from allennlp.data.samplers import BucketBatchSampler

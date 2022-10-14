@@ -1,7 +1,7 @@
 # -*- coding: utf-8
 import os
-from transformers import BertModel
-import torch
+import sys
+sys.path.append('../')
 import tokenization
 import argparse
 from gector.gec_model_w import GecBERTModel
@@ -9,7 +9,7 @@ from gector.csc_model import CSCModel
 import re
 import pandas as pd
 from openccpy import Opencc
-# from opencc import OpenCC
+
 
 vocab_path = os.getenv('vocab_path', 'vocab.txt')
 # cc = OpenCC('t2s')
@@ -194,29 +194,29 @@ if __name__ == '__main__':
     # read parameters
     parser = argparse.ArgumentParser()
     parser.add_argument('--csc_model_path',
-                        default='./plm/bert')
+                        default='../plm/bert')
     parser.add_argument('--csc_predict',
                         default=False,
                         type=bool)
     parser.add_argument('--model_path',
-                        default="./exps/seq2edit_lang8/Best_Model_Stage_2.th",
+                        default="../exps/seq2edit_lang8/Best_Model_Stage_2.th",
                         help='Path to the model file'
                         )  # GECToR模型文件，多个模型集成的话，可以用逗号隔开
     parser.add_argument('--weights_name',
                         help='Path to the pre-trained language model',
-                        default='./plm/chinese-struct-bert-large',
+                        default='../plm/chinese-struct-bert-large',
                         )  # 预训练语言模型文件，多个模型集成的话，每个模型对应一个PLM，可以用逗号隔开
     parser.add_argument('--vocab_path',
                         help='Path to the vocab file',
-                        default='./data/output_vocabulary_chinese_char_hsk+lang8_5',
+                        default='../data/output_vocabulary',
                         )  # 词表文件
     parser.add_argument('--input_file',
                         help='Path to the input file',
-                        default="./data/cgec/valid.src.char"
+                        default="../data/cgec/valid.src.char"
                         )  # 输入文件，要求：预先分好词/字
     parser.add_argument('--output_file',
                         help='Path to the output file',
-                        default="./exps/seq2edit_lang8/results/MuCGEC_test_plome.output")  # 输出结果文件
+                        default="../exps/seq2edit_lang8/results/MuCGEC_test_plome.output")  # 输出结果文件
     parser.add_argument('--max_len',
                         type=int,
                         help='The max sentence length(all longer will be truncated)',
@@ -266,7 +266,7 @@ if __name__ == '__main__':
                         default=-1)  # 使用GPU编号
     parser.add_argument('--intermediate_save_path',
                         help='the model intermediate output path',
-                        default='./exps/model_output.csv')
+                        default='../exps/model_output.csv')
     parser.add_argument('--log',
                         action='store_true')  # 是否输出完整信息
     parser.add_argument('--seg',

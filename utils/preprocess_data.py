@@ -389,8 +389,6 @@ def convert_data_from_raw_files(source_file, target_file, output_file, vocab_pat
     print(f"The size of raw dataset is {len(source_data)}")
     with Pool(worker_num) as pool:
         for aligned_sent, align_labels in pool.imap(align_sequences, tqdm(zip(source_data, target_data)), chunksize=8):
-    # for _source, _target in tqdm(zip(source_data, target_data)):
-    #     aligned_sent, align_labels  = align_sequences((_source, _target))
             if aligned_sent and align_labels:
                 for label_list in align_labels:
                     for label in label_list:

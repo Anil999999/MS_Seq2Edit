@@ -1,7 +1,6 @@
 ## CCL-2022 中文文本纠错 赛道二
 ### 本次比赛的主页 https://github.com/blcuicall/CCL2022-CLTC
 ### 比赛过程中使用的开源资源
-
 cbert微调模型: https://github.com/xueyouluo/speller-bert
 微信公众号语料: https://github.com/nonamestreet/weixin_public_corpus
 流畅度计算方法: https://github.com/baojunshan/nlp-fluency
@@ -14,7 +13,15 @@ chinese-struct-bert-large 链接: https://pan.baidu.com/s/1ha020XhoGN1j9f5ktekdg
 ###代码目录结构如下：
 ```
 ├── data
-│       └── idioms.txt
+│       │── cgec: CGED历年数据
+│       │── lang8: lang8数据
+│       │── output_only_move: 乱序数据单模型字典
+│       │── output_vocab: 常用字词典
+│       │── output_vocab_more: move词典
+│       │── output_vocabulary: 扩展词典
+│       │── vocab: 词典
+│       │── cged_test.txt: 评测数据
+│       └── verb-form-vocab.txt 英文动词变换词典
 ├── gector: 主体语法纠错
 │         ├── csc_model.py
 │         ├── datareader.py
@@ -71,14 +78,14 @@ chinese-struct-bert-large 链接: https://pan.baidu.com/s/1ha020XhoGN1j9f5ktekdg
     ├── helpers.py
     └── preprocess_data.py
 ```
-
 1. 安装依赖环境
 ```
 pip install requirements.txt
 ```
+
 2. 训练
-通用模型的训练脚本 sh pipeline.sh
 标签体系加入move操作： sh pipeline_w.sh
+
 3. 推理
 通用模型的推理脚本: sh predict.sh
 标签体系修改之后的推理脚本: sh predict_w.sh

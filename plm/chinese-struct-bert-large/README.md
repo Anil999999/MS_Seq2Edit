@@ -1,0 +1,1 @@
+chinese-struct-bert-large的下载路径： https://pan.baidu.com/s/1ha020XhoGN1j9f5ktekdgQ 提取码: rjbf
